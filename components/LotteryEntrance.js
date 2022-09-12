@@ -9,7 +9,7 @@ export default function LotteryEntrance() {
     const raffleAddress =
         chainId in contractAddresses ? contractAddresses[chainId][0] : null
     const [entranceFee, setEntranceFee] = useState("0")
-
+    // examples
     // const {runContractFunction: enterRaffle} = useWeb3Contract({
     //     abi: abi,
     //     contractAddress: raffleAddress,
