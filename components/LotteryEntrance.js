@@ -20,7 +20,7 @@ export default function LotteryEntrance() {
 
     const { runContractFunction: getEntranceFee } = useWeb3Contract({
         abi: abi,
-        contractAddress: raffleAddress,
+        contractAddress: raffleAddress, // specify the networkId
         functionName: "getEntranceFee",
         params: {},
     })
@@ -28,13 +28,19 @@ export default function LotteryEntrance() {
     useEffect(() => {
         if (isWeb3Enabled) {
             async function updateUI() {
-                const entranceFeeFromCall = (await getEntranceFee()).toString()
-                setEntranceFee(entranceFeeFromCall)
-                console.log(entranceFeeFromCall)
+                const something = await getEntranceFee()
+                console.log(something)
+                // const entranceFeeFromCall = (await getEntranceFee()).toString()
+                // setEntranceFee(entranceFeeFromCall)
+                // console.log(entranceFeeFromCall)
             }
             updateUI()
         }
     }, [isWeb3Enabled])
 
-    return <div>Hi from lottery entrance!</div>
+    return (
+        <div>
+            Hi from lottery entrance!<div>{entranceFee}</div>
+        </div>
+    )
 }
